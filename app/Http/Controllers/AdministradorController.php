@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administrador;
+use App\Models\Consulta;
 use Illuminate\Http\Request;
 use App\Models\Medico;
+use App\Models\Paciente;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,7 +19,9 @@ class AdministradorController extends Controller
     public function index()
     {
         $medicos = Medico::get();
-        return view('admin.dashboard', ['medicos' => $medicos]);
+        $pacientes = Paciente::get();
+        $consultas = Consulta::get();
+        return view('admin.dashboard', ['medicos' => $medicos, 'pacientes' => $pacientes, 'consultas' => $consultas]);
     }
 
     /**

@@ -18,7 +18,8 @@ class ConsultaController extends Controller
     public function index()
     {
         $consultas = Consulta::all();
-        return view('consulta.index', compact('consultas'));
+        $consultas = Consulta::with('medico', 'paciente')->get();
+        return view('consulta.indexConsulta', compact('consultas'));
     }
 
     /**
@@ -26,7 +27,7 @@ class ConsultaController extends Controller
      */
     public function create()
     {
-        return view('consulta.create');
+        return view('consulta.createConsulta');
     }
 
     /**
@@ -65,7 +66,7 @@ class ConsultaController extends Controller
                 ])
             ));
 
-            return redirect()->route('administradores.index');
+            return redirect()->route('consultas.index');
         } else {
             return redirect()->back()->with('error', 'No se encontró un médico disponible.');
         }

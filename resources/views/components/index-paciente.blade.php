@@ -21,6 +21,7 @@
                         <td class="border border-gray-300 px-4 py-2">{{$paciente->datos->curp}}</td>
                         <td class="border border-gray-300 px-4 py-2 flex justify-center">
                             @livewire('actualizar-paciente', ['paciente' => $paciente])
+                            @livewire('show-paciente', ['paciente' => $paciente])
                             @livewire('confirmacion-modal', ['paciente' => $paciente])
                         </td>
                     </tr>
@@ -31,8 +32,6 @@
     </div>
 </div>
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
-    <div>
-        Vollmed
-    </div>
-</div>
+@unless(request()->routeIs('administradores.index'))
+    <x-footer />
+@endunless

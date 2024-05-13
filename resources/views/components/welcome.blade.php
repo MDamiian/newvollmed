@@ -23,7 +23,8 @@
                         <td class="border border-gray-300 px-4 py-2">{{$medico->activo ? 'Activo' : 'Inactivo'}}</td>
                         <td class="border border-gray-300 px-4 py-2 flex justify-center">
                             @livewire('actualizar-medico', ['medico' => $medico])
-                            @livewire('confirmacion-modal', ['medico' => $medico])
+                            @livewire('show-medico', ['medico' => $medico])
+                            @livewire('confirmacion-modal', ['medico' => $medico])                            
                         </td>
                     </tr>
                     @endforeach

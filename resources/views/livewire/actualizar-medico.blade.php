@@ -2,7 +2,7 @@
     <x-button wire:click="set('open', true)">
         {{__('Actualizar')}}
     </x-button>
-
+ 
     <x-dialog-modal wire:model="open">
         <x-slot name="title">Actualizar médico</x-slot>
         <x-slot name="content">

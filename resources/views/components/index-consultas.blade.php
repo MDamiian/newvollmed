@@ -24,10 +24,13 @@
                                 <div>
                                     @livewire('actualizar-consulta', ['consulta' => $consulta])
                                 </div>
-
+                                <div>
+                                    @livewire('show-consulta', ['consulta' => $consulta])
+                                </div>
                                 <div>
                                     @livewire('confirmacion-modal', ['consulta' => $consulta])
                                 </div>
+
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
                                 <div>@if($consulta->path)
@@ -44,8 +47,6 @@
     </div>
 </div>
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
-    <div>
-        Vollmed
-    </div>
-</div>
+@unless(request()->routeIs('administradores.index'))
+    <x-footer />
+@endunless

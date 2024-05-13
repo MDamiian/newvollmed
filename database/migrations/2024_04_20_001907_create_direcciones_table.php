@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('calle', 30);
             $table->string('numero', 10);
-            $table->string('complemento', 5);
+            $table->string('complemento', 50);
             $table->string('colonia', 50);
             $table->string('ciudad', 50);
         });

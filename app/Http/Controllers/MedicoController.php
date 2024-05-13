@@ -14,7 +14,9 @@ class MedicoController extends Controller
 {
     public function index()
     {
-        //
+        $medicos = Medico::all();
+        $medicos = Medico::with('datos', 'user', 'especialidad')->get();
+        return view('admin.indexMedico', compact('medicos'));
     }
 
     /**
@@ -36,6 +38,7 @@ class MedicoController extends Controller
             'telefono' => 'required|unique:datos_personales,telefono',
             'calle' => 'required',
             'numero' => 'required',
+            'complemento' => 'required',
             'colonia' => 'required',
             'ciudad' => 'required',
             'email' => 'required|email|unique:users,email',

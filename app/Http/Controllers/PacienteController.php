@@ -17,7 +17,8 @@ class PacienteController extends Controller
     public function index()
     {
         $pacientes = Paciente::all();
-        return view('paciente.index', compact('pacientes'));
+        $pacientes = Paciente::with('datos', 'user')->get();
+        return view('paciente.indexPaciente', compact('pacientes'));
     }
 
     /**
@@ -75,7 +76,7 @@ class PacienteController extends Controller
             'nss' => $request->nss,
         ]);
         //medicos.index es temporal
-        return redirect()->route('administradores.index')->with('success', 'Paciente creado correctamente');
+        return redirect()->route('pacientes.index')->with('success', 'Paciente creado correctamente');
     }
 
     /**

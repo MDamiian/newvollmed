@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 60);
             $table->string('curp', 18)->unique();
-            $table->string('telefono', 10)->unique();
+            $table->string('telefono', 30)->unique();
             $table->foreignId('direccion_id')->constrained('direcciones')->onDelete('cascade');;
         });
     }

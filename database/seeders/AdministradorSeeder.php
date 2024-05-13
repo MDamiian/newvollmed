@@ -18,7 +18,7 @@ class AdministradorSeeder extends Seeder
         $user = User::create([
             'name' => 'Administrador',
             'email' => 'admin@vollmed.com',
-            'password' => bcrypt('keep6xan'),
+            'password' => bcrypt('1234567890'),
         ]);
 
         Administrador::create([
