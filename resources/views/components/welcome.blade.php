@@ -21,11 +21,22 @@
                         <td class="border border-gray-300 px-4 py-2">{{$medico->user->email}}</td>
                         <td class="border border-gray-300 px-4 py-2">{{$medico->especialidad->nombre}}</td>
                         <td class="border border-gray-300 px-4 py-2">{{$medico->activo ? 'Activo' : 'Inactivo'}}</td>
-                        <td class="border border-gray-300 px-4 py-2 flex justify-center">
-                            @livewire('actualizar-medico', ['medico' => $medico])
-                            @livewire('show-medico', ['medico' => $medico])
-                            @livewire('confirmacion-modal', ['medico' => $medico])                            
+                        <td class="border border-gray-300 px-4 py-2 w-full">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4  w-full">
+                                <div class="block w-full">
+                                    @livewire('actualizar-medico', ['medico' => $medico])
+                                </div>
+
+                                <div class="block w-full">
+                                    @livewire('show-medico', ['medico' => $medico])
+                                </div>
+
+                                <div class="block w-full">
+                                    @livewire('confirmacion-modal', ['medico' => $medico])
+                                </div>
+                            </div>
                         </td>
+
                     </tr>
                     @endforeach
                 </tbody>
