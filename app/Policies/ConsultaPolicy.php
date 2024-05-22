@@ -35,9 +35,16 @@ class ConsultaPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Consulta $consulta): bool
+    public function update(User $user, Consulta $consulta): Response
     {
-        return $user->paciente->id === $consulta->paciente_id
+        $isAdmin = $user->email === 'admin@vollmed.com' || $user->id === 1;
+
+        if ($isAdmin) {
+            return Response::allow();
+        }
+    
+        // Verificar si el usuario es el dueño de la consulta
+        return $user->id === $consulta->paciente_id 
             ? Response::allow()
             : Response::deny('No es tu consulta');
     }
@@ -47,7 +54,11 @@ class ConsultaPolicy
      */
     public function delete(User $user, Consulta $consulta): bool
     {
-        //
+        $isAdmin = $user->email === 'admin@vollmed.com' || $user->id === 1;
+        if ($isAdmin) {
+            return true;
+        }
+        return $user->id === $consulta->paciente_id;
     }
 
     /**

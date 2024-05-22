@@ -85,6 +85,13 @@ class ConsultaController extends Controller
      */
     public function edit(Consulta $consulta)
     {
+        // if (! Gate::allows('editar-consulta', $consulta)) {
+        //     abort(403);
+        // }
+        // Gate::authorize('editar-consulta', $consulta);
+        $this->authorize('update', $consulta);
+
+
         return view('consulta.editConsulta', compact('consulta'));
     }
 
@@ -93,6 +100,8 @@ class ConsultaController extends Controller
      */
     public function update(Request $request, Consulta $consulta)
     {
+        $this->authorize('update', $consulta);
+
         $request->validate([
             'fecha_hora' => 'required|date',
             'file' => 'file|mimes:pdf,doc,docx,jpg,png,jpeg|max:2048', // Validar el tipo y tamaño del archivo

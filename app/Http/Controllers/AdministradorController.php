@@ -21,6 +21,9 @@ class AdministradorController extends Controller
         $medicos = Medico::get();
         $pacientes = Paciente::get();
         $consultas = Consulta::get();
+        $medicos = Medico::with('user')->get();
+        $pacientes = Paciente::with('user')->get();
+        $consultas = Consulta::with('medico', 'paciente')->get();
         return view('admin.dashboard', ['medicos' => $medicos, 'pacientes' => $pacientes, 'consultas' => $consultas]);
     }
 

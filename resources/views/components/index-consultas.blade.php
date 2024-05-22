@@ -22,21 +22,28 @@
                         <td class="border border-gray-300 px-4 py-2">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                 <div>
+                                @can('update', $consulta)
                                     @livewire('actualizar-consulta', ['consulta' => $consulta])
+                                @endcan
                                 </div>
+                                
                                 <div>
                                     @livewire('show-consulta', ['consulta' => $consulta])
                                 </div>
                                 <div>
+                                @can('delete', $consulta)
                                     @livewire('confirmacion-modal', ['consulta' => $consulta])
+                                @endcan
                                 </div>
 
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
-                                <div>@if($consulta->path)
-                                    <a href="{{ asset('storage/'.$consulta->path) }}" target="_blank" class="btn btn-sm btn-primary mt-2">Ver archivo</a>
-                                    @endif
-                                </div>
+                                @can('update', $consulta)
+                                    <div>@if($consulta->path)
+                                        <a href="{{ asset('storage/'.$consulta->path) }}" target="_blank" class="btn btn-sm btn-primary mt-2">Ver archivo</a>
+                                        @endif
+                                    </div>
+                                @endcan
                             </div>
                         </td>
                     </tr>
