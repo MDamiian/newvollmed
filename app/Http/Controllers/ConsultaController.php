@@ -6,6 +6,8 @@ use App\Mail\CitaCreada;
 use App\Models\Consulta;
 use App\Models\Medico;
 use App\Models\Paciente;
+use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 

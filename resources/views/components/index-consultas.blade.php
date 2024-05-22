@@ -23,6 +23,8 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                 <div>
                                 @can('update', $consulta)
+                            <div class="flex flex-col items-center">
+                                <div class="flex space-x-2">
                                     @livewire('actualizar-consulta', ['consulta' => $consulta])
                                 @endcan
                                 </div>
@@ -44,6 +46,11 @@
                                         @endif
                                     </div>
                                 @endcan
+                                <div class="mt-4">
+                                    @if($consulta->path)
+                                    <a href="{{ asset('storage/'.$consulta->path) }}" target="_blank" class="btn btn-sm btn-primary mt-2">Ver archivo</a>
+                                    @endif
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -55,5 +62,5 @@
 </div>
 
 @unless(request()->routeIs('administradores.index'))
-    <x-footer />
+<x-footer />
 @endunless

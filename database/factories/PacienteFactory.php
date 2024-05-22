@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PacienteFactory extends Factory
 {
-     /**
+    /**
      * The name of the factory's corresponding model.
      *
      * @var string
@@ -37,7 +37,7 @@ class PacienteFactory extends Factory
         ];
     }
 
-     /**
+    /**
      * Define the additional states for the model.
      *
      * @return array
@@ -52,5 +52,4 @@ class PacienteFactory extends Factory
             ];
         });
     }
-
 }

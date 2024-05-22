@@ -2,7 +2,9 @@
 
 namespace App\Policies;
 
+use App\Models\Administrador;
 use App\Models\Consulta;
+use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -13,7 +15,7 @@ class ConsultaPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return ($user instanceof Administrador || $user instanceof Medico);
     }
 
     /**
