@@ -10,7 +10,13 @@ class AdministradorPolicy
 {
     use HandlesAuthorization;
 
-    public function manage(User $user)
+    /**
+     * Determine whether the user can manage as an administrator.
+     *
+     * @param  \App\Models\User  $user
+     * @return bool
+     */
+    public function manage(User $user): bool
     {
         return $user instanceof Administrador;
     }

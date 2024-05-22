@@ -14,9 +14,11 @@
                     <x-nav-link href="{{ route('administradores.index') }}" :active="request()->routeIs('administradores.index')">
                         {{ __('VollMed') }}
                     </x-nav-link>
+
                     <x-nav-link href="{{ route('medicos.index') }}" :active="request()->routeIs('medicos.index')">
                         {{ __('Médicos') }}
                     </x-nav-link>
+
                     <x-nav-link href="{{ route('pacientes.index') }}" :active="request()->routeIs('pacientes.index')">
                         {{ __('Paciente') }}
                     </x-nav-link>

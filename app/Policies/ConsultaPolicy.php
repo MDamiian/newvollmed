@@ -2,7 +2,9 @@
 
 namespace App\Policies;
 
+use App\Models\Administrador;
 use App\Models\Consulta;
+use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -21,7 +23,7 @@ class ConsultaPolicy
      */
     public function view(User $user, Consulta $consulta): bool
     {
-        return $user->paciente->id === $consulta->paciente->id;
+        return ($user->paciente->id === $consulta->paciente->id) || ($user instanceof Administrador || $user instanceof Medico);
     }
 
     /**
@@ -37,9 +39,9 @@ class ConsultaPolicy
      */
     public function update(User $user, Consulta $consulta): bool
     {
-        return $user->paciente->id === $consulta->paciente_id
+        return ($user->paciente->id === $consulta->paciente_id
             ? Response::allow()
-            : Response::deny('No es tu consulta');
+            : Response::deny('No es tu consulta')) || ($user instanceof Administrador || $user instanceof Medico);
     }
 
     /**
@@ -47,7 +49,9 @@ class ConsultaPolicy
      */
     public function delete(User $user, Consulta $consulta): bool
     {
-        //
+        return ($user->paciente->id === $consulta->paciente_id
+            ? Response::allow()
+            : Response::deny('No es tu consulta')) || ($user instanceof Administrador);
     }
 
     /**
