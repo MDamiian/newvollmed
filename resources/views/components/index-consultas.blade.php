@@ -20,20 +20,14 @@
                         <td class="border border-gray-300 px-4 py-2">{{$consulta->fecha_hora}}</td>
                         <td class="border border-gray-300 px-4 py-2">{{$consulta->paciente->user->email}}</td>
                         <td class="border border-gray-300 px-4 py-2">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                                <div>
+                            <div class="flex flex-col items-center">
+                                <div class="flex space-x-2">
                                     @livewire('actualizar-consulta', ['consulta' => $consulta])
-                                </div>
-                                <div>
                                     @livewire('show-consulta', ['consulta' => $consulta])
-                                </div>
-                                <div>
                                     @livewire('confirmacion-modal', ['consulta' => $consulta])
                                 </div>
-
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
-                                <div>@if($consulta->path)
+                                <div class="mt-4">
+                                    @if($consulta->path)
                                     <a href="{{ asset('storage/'.$consulta->path) }}" target="_blank" class="btn btn-sm btn-primary mt-2">Ver archivo</a>
                                     @endif
                                 </div>
@@ -48,5 +42,5 @@
 </div>
 
 @unless(request()->routeIs('administradores.index'))
-    <x-footer />
+<x-footer />
 @endunless
