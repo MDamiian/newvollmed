@@ -8,13 +8,10 @@ use App\Models\Administrador;
 use App\Models\Consulta;
 use App\Models\Medico;
 use App\Models\Paciente;
-use App\Models\Team;
-use App\Models\User;
 use App\Policies\AdministradorPolicy;
 use App\Policies\ConsultaPolicy;
 use App\Policies\MedicoPolicy;
 use App\Policies\PacientePolicy;
-use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,7 +23,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Consulta::class => ConsultaPolicy::class,
-        User::class => AdministradorPolicy::class,
+        Medico::class => MedicoPolicy::class,
+        Administrador::class => AdministradorPolicy::class,
+        Paciente::class => PacientePolicy::class,
     ];
 
     /**

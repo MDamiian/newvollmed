@@ -15,7 +15,7 @@ class ConsultaPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return ($user instanceof Administrador || $user instanceof Medico);
     }
 
     /**
@@ -23,7 +23,7 @@ class ConsultaPolicy
      */
     public function view(User $user, Consulta $consulta): bool
     {
-        return ($user->paciente->id === $consulta->paciente->id) || ($user instanceof Administrador || $user instanceof Medico);
+        return $user->paciente->id === $consulta->paciente->id;
     }
 
     /**
